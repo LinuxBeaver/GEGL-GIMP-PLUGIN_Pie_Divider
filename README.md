@@ -69,7 +69,7 @@ meson setup --buildtype=release build
 ninja -C build
 ```
 
-More Previews of the plugins ability.
+## More Previews of the plugins options
 
 ![image](https://github.com/LinuxBeaver/Gimp_Plugin_Equal_Pie_Divider/assets/78667207/30bd61f8-5ff7-45b8-9b7d-c7213ab6fbc2)
 
