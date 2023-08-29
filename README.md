@@ -1,3 +1,6 @@
+DOWNLOAD PLUGIN BINARIES FOR WINDOWS AND LINUX HEEE.
+https://github.com/LinuxBeaver/Gimp_Plugin_Equal_Pie_Divider/releases
+
 # Gimp Plugin to make equal pie dividers.
 
 Render Equal Pie Slices with this Gimp plugin. Though in default it is a four cornered structure. Rotating and adding dividers makes it looks like pie.
