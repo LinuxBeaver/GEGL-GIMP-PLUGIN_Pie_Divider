@@ -1,4 +1,4 @@
-DOWNLOAD PLUGIN BINARIES FOR WINDOWS AND LINUX HEEE.
+DOWNLOAD PLUGIN BINARIES FOR WINDOWS AND LINUX HERE
 https://github.com/LinuxBeaver/Gimp_Plugin_Equal_Pie_Divider/releases
 
 # Gimp Plugin to make equal pie dividers.
