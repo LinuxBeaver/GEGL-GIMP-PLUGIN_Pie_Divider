@@ -16,7 +16,7 @@
  * Copyright 2006 Øyvind Kolås <pippin@gimp.org>
  * 2023 Beaver, Pie divider
 
-Static preview this plugin without installing by pasting this syntax inside Gimp's GEGL Graph filter. n-segs is the amount of dividers and r-angle is the rotation of dividers. 
+Static preview this plugin without installing by pasting this syntax inside Gimp's GEGL Graph filter. n-segs is the amount of dividers and r-angle is the rotation of dividers.
 Drop Shadow's radius is the growth size of the divider.
 
  over aux=[  color value=#000000  ] crop
@@ -86,15 +86,15 @@ static void attach (GeglOperation *operation)
   output   = gegl_node_get_output_proxy (gegl, "output");
 
   graph = gegl_node_new_child (gegl,
-                                  "operation", "gegl:gegl", "string", color_fill, 
+                                  "operation", "gegl:gegl", "string", color_fill,
                                   NULL);
 
   graph2 = gegl_node_new_child (gegl,
-                                  "operation", "gegl:gegl", "string", invert_transparency, 
+                                  "operation", "gegl:gegl", "string", invert_transparency,
                                   NULL);
 
   graph3 = gegl_node_new_child (gegl,
-                                  "operation", "gegl:gegl", "string", hyper_opacity_and_fix, 
+                                  "operation", "gegl:gegl", "string", hyper_opacity_and_fix,
                                   NULL);
 
   grow = gegl_node_new_child (gegl,
@@ -102,7 +102,7 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   kali = gegl_node_new_child (gegl,
-                                  "operation", "gegl:mirrors", "n-seg", 4, "r-angle", 90.0,
+                                  "operation", "gegl:mirrors", "r-angle", 90.0,
                                   NULL);
 
   color = gegl_node_new_child (gegl,
@@ -132,6 +132,8 @@ gegl_op_class_init (GeglOpClass *klass)
     "title",       _("Pie Divider"),
     "reference-hash", "knsedakfpieafdigks44loaa",
     "description", _("Render equally spaced dividers in the style of a sliced pie. Though the default setting is a generic four corners structure. If it is rotated it will match the 'pie slices' look. Once a divider is made a user can manually put transformed images inside of it. "),
+    "gimp:menu-path", "<Image>/Filters/Render/Fun",
+    "gimp:menu-label", _("Pie Divider..."),
     NULL);
 }
 
