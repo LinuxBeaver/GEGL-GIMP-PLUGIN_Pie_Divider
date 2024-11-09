@@ -35,15 +35,15 @@ color-overlay value=#11005d
 
 
 #define color_fill \
-" over aux=[  color value=#000000  ] crop "\
+" over aux=[  color value=#000000  ]  crop "\
 
 
 
 #define invert_transparency \
-" color-overlay value=#ffffff dst-over aux=[ color value=#000000  ]  gimp:layer-mode layer-mode=color-erase opacity=1.00 aux=[ color value=#ffffff ] crop "\
+" color-overlay value=#ffffff dst-over aux=[ color value=#000000  ]  gimp:layer-mode layer-mode=color-erase opacity=1.00 aux=[ color value=#ffffff ] crop  "\
 
 #define hyper_opacity_and_fix \
-" gegl:opacity value=8.5 median-blur radius=0 "\
+" gegl:opacity value=10 opacity value=7 median-blur radius=0 "\
 
 
 property_int (dividers, _("Amount of Dividers"), 4)
@@ -80,10 +80,15 @@ property_color  (color, _("Color of Divider"), "#000000")
 static void attach (GeglOperation *operation)
 {
   GeglNode *gegl = operation->node;
-  GeglNode *input, *graph, *graph2, *grow, *kali, *graph3, *color,  *output;
+  GeglNode *input, *graph, *graph2, *grow, *kali, *crop, *graph3, *color,  *output;
 
   input    = gegl_node_get_input_proxy (gegl, "input");
   output   = gegl_node_get_output_proxy (gegl, "output");
+
+  crop = gegl_node_new_child (gegl,
+                                  "operation", "gegl:crop", 
+                                  NULL);
+
 
   graph = gegl_node_new_child (gegl,
                                   "operation", "gegl:gegl", "string", color_fill,
@@ -109,7 +114,8 @@ static void attach (GeglOperation *operation)
                                   "operation", "gegl:color-overlay",
                                   NULL);
 
-  gegl_node_link_many (input, graph, kali, graph2, grow, color, graph3, output, NULL);
+  gegl_node_link_many (input, graph, kali, graph2, grow, color, graph3, crop, output, NULL);
+  gegl_node_connect (crop, "aux", input, "output");
 
   gegl_operation_meta_redirect (operation, "rotate", kali, "r-angle");
   gegl_operation_meta_redirect (operation, "dividers", kali, "n-segs");
