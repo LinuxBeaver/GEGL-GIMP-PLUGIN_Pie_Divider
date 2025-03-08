@@ -103,7 +103,7 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   grow = gegl_node_new_child (gegl,
-                                  "operation", "gegl:dropshadow", "x", 0.0, "y", 0.0, "radius", 0.0, "opacity", 2.0,
+                                  "operation", "gegl:dropshadow", "x", 0.0, "y", 0.0, "radius", 0.0, "opacity", 1.0,
                                   NULL);
 
   kali = gegl_node_new_child (gegl,
